@@ -10,3 +10,9 @@ C:\Users\user\source\repos\SuperAdventure\Engine\obj\Debug\Engine.csproj.Assembl
 C:\Users\user\source\repos\SuperAdventure\Engine\obj\Debug\Engine.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\SuperAdventure\Engine\obj\Debug\Engine.dll
 C:\Users\user\source\repos\SuperAdventure\Engine\obj\Debug\Engine.pdb
+C:\Users\JR's Computer\Documents\GitHub\RPG-Game\Engine\bin\Debug\Engine.dll
+C:\Users\JR's Computer\Documents\GitHub\RPG-Game\Engine\bin\Debug\Engine.pdb
+C:\Users\JR's Computer\Documents\GitHub\RPG-Game\Engine\obj\Debug\Engine.csproj.AssemblyReference.cache
+C:\Users\JR's Computer\Documents\GitHub\RPG-Game\Engine\obj\Debug\Engine.csproj.CoreCompileInputs.cache
+C:\Users\JR's Computer\Documents\GitHub\RPG-Game\Engine\obj\Debug\Engine.dll
+C:\Users\JR's Computer\Documents\GitHub\RPG-Game\Engine\obj\Debug\Engine.pdb
