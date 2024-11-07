@@ -46,5 +46,10 @@ namespace SuperAdventure
             _player.Gold += 10;
             lblGold.Text = _player.Gold.ToString();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
