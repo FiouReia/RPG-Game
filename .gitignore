@@ -24,6 +24,10 @@
 *.cache
 
 *Debug/
+Debug/
+bin/
+obj/
+Release/
 
 # Windows image file caches
 Thumbs.db
