@@ -42,27 +42,15 @@ namespace Engine
                 return true;
             }
 
-            foreach (InventoryItem ii in Inventory)
-            {
-                if (ii.Details.ID == location.ItemRequiredToEnter.ID)
-                {
-                    return true;
-                }
-            }
-            return false;
+            
+            return Inventory.Exists(ii => ii.Details.ID == location.ItemRequiredToEnter.ID);
 
         }
 
         public bool HasThisQuest(Quest quest)
         {
-            foreach (PlayerQuest playerQuest in Quests)
-            {
-                if (playerQuest.Details.ID == quest.ID)
-                {
-                    return true;
-                }
-            }
-            return false;
+            
+            return Quests.Exists(ii=> ii.Details.ID == quest.ID);
         }
 
         public bool CompletedThisQuest(Quest quest)
@@ -82,27 +70,12 @@ namespace Engine
             // See if the player has all the items needed to complete the quest here
             foreach (QuestCompletionItem qci in quest.QuestCompletionItems)
             {
-                bool foundItemInPlayersInventory = false;
-
-                // Check each item in the player's inventory, to see if they have it, and enough of it
-                foreach (InventoryItem ii in Inventory)
-                {
-                    // The player has the item in their inventory
-                    if (ii.Details.ID == qci.Details.ID)
-                    {
-                        foundItemInPlayersInventory = true;
-                        // The player does not have enough of this item to complete the quest
-                        if (ii.Quantity < qci.Quantity)
-                        {
-                            return false;
-                        }
-                    }
-                }
-                // The player does not have any of this quest completion item in their inventory
-                if (!foundItemInPlayersInventory)
+                
+                if(!Inventory.Exists(ii => ii.Details.ID == qci.Details.ID && ii.Quantity>= qci.Quantity))
                 {
                     return false;
                 }
+
             }
             // If we got here, then the player must have all the required items, and enough of them, to complete the quest.
             return true;
@@ -110,16 +83,13 @@ namespace Engine
 
         public void RemoveQuestCompletionItems(Quest quest)
         {
-            foreach (QuestCompletionItem questCompletionItem in quest.QuestCompletionItems)
+            foreach (QuestCompletionItem qci in quest.QuestCompletionItems)
             {
-                foreach (InventoryItem inventoryItem in Inventory)
+                InventoryItem item = Inventory.SingleOrDefault(ii => ii.Details.ID == qci.Details.ID);
+                if (item != null)
                 {
-                    if (inventoryItem.Details.ID == questCompletionItem.Details.ID)
-                    {
-                        // Subtract the quantity from the player's inventory that was needed to complete the quest
-                        inventoryItem.Quantity -= questCompletionItem.Quantity;
-                        break;
-                    }
+                    // Subtract the quantity from the player's inventory that was needed to complete the quest
+                    item.Quantity -= qci.Quantity;
                 }
             }
 
@@ -127,30 +97,29 @@ namespace Engine
 
         public void AddItemToInventory(Item itemToAdd)
         {
-            foreach (InventoryItem ii in Inventory)
+            InventoryItem item = Inventory.SingleOrDefault(ii => ii.Details.ID == itemToAdd.ID);
+            if (item == null)
             {
-                if (ii.Details.ID == itemToAdd.ID)
-                {
-                    // They have the item in their inventory, so increase the quantity by one
-                    ii.Quantity++;
-                    return;
-                }
+                // They didn't have the item, so add it to their inventory, with a quantity of 1
+                Inventory.Add(new InventoryItem(itemToAdd, 1));
             }
-            // They didn't have the item, so add it to their inventory, with a quantity of 1
-            Inventory.Add(new InventoryItem(itemToAdd, 1));
+            else
+            {
+                // They have the item in their inventory, so increase the quantity by one
+                item.Quantity++;
+            }
         }
 
         public void MarkQuestCompleted(Quest quest)
         {
             // Find the quest in the player's quest list
-            foreach (PlayerQuest pq in Quests)
+
+            PlayerQuest playerQuest = Quests.SingleOrDefault(pq => pq.Details.ID == quest.ID);
+            if (playerQuest != null)
             {
-                if (pq.Details.ID == quest.ID)
-                {
-                    pq.IsCompleted = true;
-                    return;
-                }
+                playerQuest.IsCompleted = true;
             }
+
         }
 
 
