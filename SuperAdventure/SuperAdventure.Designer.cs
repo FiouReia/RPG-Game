@@ -36,7 +36,6 @@
             this.lblGold = new System.Windows.Forms.Label();
             this.lblExperience = new System.Windows.Forms.Label();
             this.lblLevel = new System.Windows.Forms.Label();
-            this.btn_addGold = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cboWeapons = new System.Windows.Forms.ComboBox();
             this.cboPotions = new System.Windows.Forms.ComboBox();
@@ -121,16 +120,6 @@
             this.lblLevel.Name = "lblLevel";
             this.lblLevel.Size = new System.Drawing.Size(0, 13);
             this.lblLevel.TabIndex = 7;
-            // 
-            // btn_addGold
-            // 
-            this.btn_addGold.Location = new System.Drawing.Point(163, 46);
-            this.btn_addGold.Name = "btn_addGold";
-            this.btn_addGold.Size = new System.Drawing.Size(75, 23);
-            this.btn_addGold.TabIndex = 8;
-            this.btn_addGold.Text = "+10 Gold";
-            this.btn_addGold.UseVisualStyleBackColor = true;
-            this.btn_addGold.Click += new System.EventHandler(this.btn_addGold_Click);
             // 
             // label5
             // 
@@ -284,7 +273,6 @@
             this.Controls.Add(this.cboPotions);
             this.Controls.Add(this.cboWeapons);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btn_addGold);
             this.Controls.Add(this.lblLevel);
             this.Controls.Add(this.lblExperience);
             this.Controls.Add(this.lblGold);
@@ -313,7 +301,6 @@
         private System.Windows.Forms.Label lblGold;
         private System.Windows.Forms.Label lblExperience;
         private System.Windows.Forms.Label lblLevel;
-        private System.Windows.Forms.Button btn_addGold;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboWeapons;
         private System.Windows.Forms.ComboBox cboPotions;
