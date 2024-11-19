@@ -152,14 +152,17 @@ namespace SuperAdventure
                             rtbMessages.Text += "You receive: " + Environment.NewLine;
                             rtbMessages.Text += newLocation.QuestAvailableHere.RewardExperiencePoints.ToString() + " experience points" + Environment.NewLine;
                             rtbMessages.Text += newLocation.QuestAvailableHere.RewardGold.ToString() + " gold" + Environment.NewLine;
-                            rtbMessages.Text += newLocation.QuestAvailableHere.RewardItem.Name + Environment.NewLine;
+                            foreach (QuestReward ii in newLocation.QuestAvailableHere.RewardItem)
+                            {
+                                rtbMessages.Text += ii.Details.Name + " x" + ii.Quantity.ToString() + Environment.NewLine;
+                            }
                             rtbMessages.Text += Environment.NewLine;
 
                             _player.ExperiencePoints += newLocation.QuestAvailableHere.RewardExperiencePoints;
                             _player.Gold += newLocation.QuestAvailableHere.RewardGold;
 
                             // Add the reward item to the player's inventory
-                            _player.AddItemToInventory(newLocation.QuestAvailableHere.RewardItem);
+                            GiveQuestRewards(newLocation);
 
                             // Mark the quest as completed
                             _player.MarkQuestCompleted(newLocation.QuestAvailableHere);
@@ -323,9 +326,23 @@ namespace SuperAdventure
                 cboWeapons.DataSource = weapons;
                 cboWeapons.DisplayMember = "Name";
                 cboWeapons.ValueMember = "ID";
-                cboWeapons.SelectedIndex = 0;
             }
 
+        }
+
+        private void GiveQuestRewards(Location newLocation)
+        {
+
+
+            foreach(QuestReward ii in newLocation.QuestAvailableHere.RewardItem)
+            {
+
+                for(int x = 0; x < ii.Quantity; x++)
+                {
+                    _player.AddItemToInventory(ii.Details);
+                }
+
+            }
         }
 
         private void UpdatePotionListInUI()
@@ -482,7 +499,7 @@ namespace SuperAdventure
                 // Refresh player information and inventory controls
                 UpdatePlayerStats();
                 UpdateInventoryListInUI();
-                UpdateWeaponListInUI();
+                //UpdateWeaponListInUI();
                 UpdatePotionListInUI();
                 // Add a blank line to the messages box, just for appearance.
                 rtbMessages.Text += Environment.NewLine;
@@ -513,6 +530,14 @@ namespace SuperAdventure
         private void SuperAdventure_FormClosing(object sender, FormClosingEventArgs e)
         {
             File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _player = Player.CreateDefaultPlayer();
+            MoveTo(World.LocationByID(World.LOCATION_ID_HOME));
+            UpdatePlayerStats();
+
         }
     }
 }
