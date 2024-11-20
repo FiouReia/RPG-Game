@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -10,8 +11,27 @@ namespace Engine
 {
     public class Player : LivingCreature
     {
-        public int Gold {   get; set;   }
-        public int ExperiencePoints {   get; private set;   }
+        private int _gold;
+        private int _experiencePoints;
+        public int Gold
+        {
+            get { return _gold; }
+            set
+            {
+                _gold = value;
+                OnPropertyChanged("Gold");
+            }
+        }
+        public int ExperiencePoints
+        {
+            get { return _experiencePoints; }
+            private set
+            {
+                _experiencePoints = value;
+                OnPropertyChanged("ExperiencePoints");
+                OnPropertyChanged("Level");
+            }
+        }
         public int Level
         {
             get { return ((ExperiencePoints / 100) + 1); }
@@ -19,11 +39,59 @@ namespace Engine
 
         public Weapon CurrentWeapon { get; set; }
 
-        public List<InventoryItem> Inventory { get; set; }
-        public List<PlayerQuest> Quests { get; set; }
+        public BindingList<InventoryItem> Inventory { get; set; }
+        public BindingList<PlayerQuest> Quests { get; set; }
 
         public Location CurrentLocation { get; set; }
 
+        public List<Weapon> Weapons
+        {
+            get { return Inventory.Where(x => x.Details is Weapon).Select(x => x.Details as Weapon).ToList(); }
+        }
+        public List<HealingPotion> Potions
+        {
+            get { return Inventory.Where(x => x.Details is HealingPotion).Select(x => x.Details as HealingPotion).ToList(); }
+        }
+
+        private void RaiseInventoryChangedEvent(Item item)
+        {
+            if (item is Weapon)
+            {
+                OnPropertyChanged("Weapons");
+            }
+            if (item is HealingPotion)
+            {
+                OnPropertyChanged("Potions");
+            }
+        }
+
+        public void RemoveItemFromInventory(Item itemToRemove, int quantity = 1)
+        {
+            InventoryItem item = Inventory.SingleOrDefault(ii => ii.Details.ID == itemToRemove.ID);
+            if (item == null)
+            {
+                // The item is not in the player's inventory, so ignore it.
+                // We might want to raise an error for this situation
+            }
+            else
+            {
+                // They have the item in their inventory, so decrease the quantity
+                item.Quantity -= quantity;
+                // Don't allow negative quantities.
+                // We might want to raise an error for this situation
+                if (item.Quantity < 0)
+                {
+                    item.Quantity = 0;
+                }
+                // If the quantity is zero, remove the item from the list
+                if (item.Quantity == 0)
+                {
+                    Inventory.Remove(item);
+                }
+                // Notify the UI that the inventory has changed
+                RaiseInventoryChangedEvent(itemToRemove);
+            }
+        }
 
         public bool HasRequiredItemToEnterThisLocation(Location location)
         {
@@ -33,14 +101,14 @@ namespace Engine
             }
 
 
-            return Inventory.Exists(ii => ii.Details.ID == location.ItemRequiredToEnter.ID);
+            return Inventory.Any(ii => ii.Details.ID == location.ItemRequiredToEnter.ID);
 
         }
 
         public bool HasThisQuest(Quest quest)
         {
 
-            return Quests.Exists(ii => ii.Details.ID == quest.ID);
+            return Quests.Any(ii => ii.Details.ID == quest.ID);
         }
 
         public void AddExperiencePoints(int experiencePointsToAdd)
@@ -67,7 +135,7 @@ namespace Engine
             foreach (QuestCompletionItem qci in quest.QuestCompletionItems)
             {
 
-                if (!Inventory.Exists(ii => ii.Details.ID == qci.Details.ID && ii.Quantity >= qci.Quantity))
+                if (!Inventory.Any(ii => ii.Details.ID == qci.Details.ID && ii.Quantity >= qci.Quantity))
                 {
                     return false;
                 }
@@ -81,29 +149,28 @@ namespace Engine
         {
             foreach (QuestCompletionItem qci in quest.QuestCompletionItems)
             {
+                // Subtract the quantity from the player's inventory that was needed to complete the quest
                 InventoryItem item = Inventory.SingleOrDefault(ii => ii.Details.ID == qci.Details.ID);
                 if (item != null)
                 {
-                    // Subtract the quantity from the player's inventory that was needed to complete the quest
-                    item.Quantity -= qci.Quantity;
+                    RemoveItemFromInventory(item.Details, qci.Quantity);
                 }
             }
-
         }
-
-        public void AddItemToInventory(Item itemToAdd)
+        public void AddItemToInventory(Item itemToAdd, int quantity = 1)
         {
             InventoryItem item = Inventory.SingleOrDefault(ii => ii.Details.ID == itemToAdd.ID);
             if (item == null)
             {
-                // They didn't have the item, so add it to their inventory, with a quantity of 1
-                Inventory.Add(new InventoryItem(itemToAdd, 1));
+                // They didn't have the item, so add it to their inventory
+                Inventory.Add(new InventoryItem(itemToAdd, quantity));
             }
             else
             {
-                // They have the item in their inventory, so increase the quantity by one
-                item.Quantity++;
+                // They have the item in their inventory, so increase the quantity
+                item.Quantity += quantity;
             }
+            RaiseInventoryChangedEvent(itemToAdd);
         }
 
         public void MarkQuestCompleted(Quest quest)
@@ -203,8 +270,8 @@ namespace Engine
         {
             Gold = gold;
             ExperiencePoints = experiencePoints;
-            Inventory = new List<InventoryItem>();
-            Quests = new List<PlayerQuest>();
+            Inventory = new BindingList<InventoryItem>();
+            Quests = new BindingList<PlayerQuest>();
 
         }
 
@@ -213,6 +280,12 @@ namespace Engine
             Player player = new Player(10, 10, 20, 0);
             player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_RUSTY_SWORD), 1));
             player.CurrentLocation = World.LocationByID(World.LOCATION_ID_HOME);
+            return player;
+        }
+
+        public static Player ResetPlayer(Player player)
+        {
+            player = CreateDefaultPlayer();
             return player;
         }
 
@@ -263,6 +336,9 @@ namespace Engine
 
 
         }
+
+
+
     }
 
 
