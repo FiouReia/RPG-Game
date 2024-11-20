@@ -11,7 +11,7 @@ namespace Engine
     public class Player : LivingCreature
     {
         public int Gold {   get; set;   }
-        public int ExperiencePoints {   get; set;   }
+        public int ExperiencePoints {   get; private set;   }
         public int Level
         {
             get { return ((ExperiencePoints / 100) + 1); }
@@ -41,6 +41,12 @@ namespace Engine
         {
 
             return Quests.Exists(ii => ii.Details.ID == quest.ID);
+        }
+
+        public void AddExperiencePoints(int experiencePointsToAdd)
+        {
+            ExperiencePoints += experiencePointsToAdd;
+            MaximumHitPoints = (Level * 10);
         }
 
         public bool CompletedThisQuest(Quest quest)
