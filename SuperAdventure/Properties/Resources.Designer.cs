@@ -63,9 +63,9 @@ namespace SuperAdventure.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _4413874 {
+        internal static System.Drawing.Bitmap Background {
             get {
-                object obj = ResourceManager.GetObject("4413874", resourceCulture);
+                object obj = ResourceManager.GetObject("Background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,29 +73,9 @@ namespace SuperAdventure.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _7390029 {
+        internal static System.Drawing.Bitmap Bridge {
             get {
-                object obj = ResourceManager.GetObject("7390029", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _7894037 {
-            get {
-                object obj = ResourceManager.GetObject("7894037", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap agriculture_farm_field {
-            get {
-                object obj = ResourceManager.GetObject("agriculture-farm-field", resourceCulture);
+                object obj = ResourceManager.GetObject("Bridge", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +93,9 @@ namespace SuperAdventure.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap House_With_Garden_Flat_icon {
+        internal static System.Drawing.Bitmap Farm_Field {
             get {
-                object obj = ResourceManager.GetObject("House-With-Garden-Flat-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Farm Field", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +103,9 @@ namespace SuperAdventure.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap image1 {
+        internal static System.Drawing.Bitmap Farm_House {
             get {
-                object obj = ResourceManager.GetObject("image1", resourceCulture);
+                object obj = ResourceManager.GetObject("Farm House", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +113,9 @@ namespace SuperAdventure.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap okw8_tjae_180521 {
+        internal static System.Drawing.Bitmap Guard_Post {
             get {
-                object obj = ResourceManager.GetObject("okw8_tjae_180521", resourceCulture);
+                object obj = ResourceManager.GetObject("Guard Post", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +123,9 @@ namespace SuperAdventure.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap plaza_square_city_town_travel_512 {
+        internal static System.Drawing.Bitmap Home {
             get {
-                object obj = ResourceManager.GetObject("plaza-square-city-town-travel-512", resourceCulture);
+                object obj = ResourceManager.GetObject("Home", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,10 +133,9 @@ namespace SuperAdventure.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pngtree_line_illustration_of_forest_and_trees_in_garden_with_colorful_butterfly_vector_png_image_6923308 {
+        internal static System.Drawing.Bitmap Spider_Forest {
             get {
-                object obj = ResourceManager.GetObject("pngtree-line-illustration-of-forest-and-trees-in-garden-with-colorful-butterfly-v" +
-                        "ector-png-image_6923308", resourceCulture);
+                object obj = ResourceManager.GetObject("Spider Forest", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -164,10 +143,29 @@ namespace SuperAdventure.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap scary_witch_house_colored_icon_in_powerpoint_pptx_png_and_editable_eps_format_slide011 {
+        internal static System.Drawing.Bitmap Town_Plaza {
             get {
-                object obj = ResourceManager.GetObject("scary_witch_house_colored_icon_in_powerpoint_pptx_png_and_editable_eps_format_sli" +
-                        "de011", resourceCulture);
+                object obj = ResourceManager.GetObject("Town Plaza", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Witch_Garden {
+            get {
+                object obj = ResourceManager.GetObject("Witch Garden", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Witch_hut {
+            get {
+                object obj = ResourceManager.GetObject("Witch hut", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

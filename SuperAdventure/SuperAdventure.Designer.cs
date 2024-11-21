@@ -50,6 +50,7 @@
             this.dgvQuests = new System.Windows.Forms.DataGridView();
             this.btnUseWeapon = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.picGarden = new System.Windows.Forms.PictureBox();
             this.picAlchemyHut = new System.Windows.Forms.PictureBox();
             this.picHome = new System.Windows.Forms.PictureBox();
@@ -60,7 +61,6 @@
             this.picFarmHouse = new System.Windows.Forms.PictureBox();
             this.picFields = new System.Windows.Forms.PictureBox();
             this.picBackground = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGarden)).BeginInit();
@@ -287,9 +287,18 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(718, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(28, 13);
+            this.label6.TabIndex = 34;
+            this.label6.Text = "Map";
+            // 
             // picGarden
             // 
-            this.picGarden.Image = global::SuperAdventure.Properties.Resources.pngtree_line_illustration_of_forest_and_trees_in_garden_with_colorful_butterfly_vector_png_image_6923308;
+            this.picGarden.Image = global::SuperAdventure.Properties.Resources.Witch_Garden;
             this.picGarden.Location = new System.Drawing.Point(828, 29);
             this.picGarden.Name = "picGarden";
             this.picGarden.Size = new System.Drawing.Size(52, 50);
@@ -300,7 +309,7 @@
             // 
             // picAlchemyHut
             // 
-            this.picAlchemyHut.Image = global::SuperAdventure.Properties.Resources.scary_witch_house_colored_icon_in_powerpoint_pptx_png_and_editable_eps_format_slide011;
+            this.picAlchemyHut.Image = global::SuperAdventure.Properties.Resources.Witch_hut;
             this.picAlchemyHut.Location = new System.Drawing.Point(828, 85);
             this.picAlchemyHut.Name = "picAlchemyHut";
             this.picAlchemyHut.Size = new System.Drawing.Size(52, 50);
@@ -312,7 +321,7 @@
             // picHome
             // 
             this.picHome.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.picHome.Image = global::SuperAdventure.Properties.Resources.House_With_Garden_Flat_icon;
+            this.picHome.Image = global::SuperAdventure.Properties.Resources.Home;
             this.picHome.Location = new System.Drawing.Point(828, 197);
             this.picHome.Name = "picHome";
             this.picHome.Size = new System.Drawing.Size(52, 50);
@@ -322,7 +331,7 @@
             // 
             // picSpiderForest
             // 
-            this.picSpiderForest.Image = global::SuperAdventure.Properties.Resources.okw8_tjae_180521;
+            this.picSpiderForest.Image = global::SuperAdventure.Properties.Resources.Spider_Forest;
             this.picSpiderForest.Location = new System.Drawing.Point(1002, 141);
             this.picSpiderForest.Name = "picSpiderForest";
             this.picSpiderForest.Size = new System.Drawing.Size(52, 50);
@@ -333,7 +342,7 @@
             // 
             // picBridge
             // 
-            this.picBridge.Image = global::SuperAdventure.Properties.Resources._7894037;
+            this.picBridge.Image = global::SuperAdventure.Properties.Resources.Bridge;
             this.picBridge.Location = new System.Drawing.Point(944, 141);
             this.picBridge.Name = "picBridge";
             this.picBridge.Size = new System.Drawing.Size(52, 50);
@@ -344,7 +353,7 @@
             // 
             // picGuardHouse
             // 
-            this.picGuardHouse.Image = global::SuperAdventure.Properties.Resources._4413874;
+            this.picGuardHouse.Image = global::SuperAdventure.Properties.Resources.Guard_Post;
             this.picGuardHouse.Location = new System.Drawing.Point(886, 141);
             this.picGuardHouse.Name = "picGuardHouse";
             this.picGuardHouse.Size = new System.Drawing.Size(52, 50);
@@ -355,7 +364,7 @@
             // 
             // picTownSquare
             // 
-            this.picTownSquare.Image = global::SuperAdventure.Properties.Resources.plaza_square_city_town_travel_512;
+            this.picTownSquare.Image = global::SuperAdventure.Properties.Resources.Town_Plaza;
             this.picTownSquare.Location = new System.Drawing.Point(828, 141);
             this.picTownSquare.Name = "picTownSquare";
             this.picTownSquare.Size = new System.Drawing.Size(52, 50);
@@ -366,7 +375,7 @@
             // 
             // picFarmHouse
             // 
-            this.picFarmHouse.Image = global::SuperAdventure.Properties.Resources._7390029;
+            this.picFarmHouse.Image = global::SuperAdventure.Properties.Resources.Farm_House;
             this.picFarmHouse.Location = new System.Drawing.Point(770, 141);
             this.picFarmHouse.Name = "picFarmHouse";
             this.picFarmHouse.Size = new System.Drawing.Size(52, 50);
@@ -377,7 +386,7 @@
             // 
             // picFields
             // 
-            this.picFields.Image = global::SuperAdventure.Properties.Resources.agriculture_farm_field;
+            this.picFields.Image = global::SuperAdventure.Properties.Resources.Farm_Field;
             this.picFields.Location = new System.Drawing.Point(712, 141);
             this.picFields.Name = "picFields";
             this.picFields.Size = new System.Drawing.Size(52, 50);
@@ -388,21 +397,12 @@
             // 
             // picBackground
             // 
-            this.picBackground.Image = global::SuperAdventure.Properties.Resources.image1;
+            this.picBackground.Image = global::SuperAdventure.Properties.Resources.Background;
             this.picBackground.Location = new System.Drawing.Point(705, 16);
             this.picBackground.Name = "picBackground";
             this.picBackground.Size = new System.Drawing.Size(357, 244);
             this.picBackground.TabIndex = 33;
             this.picBackground.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(718, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 13);
-            this.label6.TabIndex = 34;
-            this.label6.Text = "Map";
             // 
             // SuperAdventure
             // 

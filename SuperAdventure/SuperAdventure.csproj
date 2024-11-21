@@ -90,34 +90,34 @@
     <None Include="Resources\elementor-placeholder-image.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\House-With-Garden-Flat-icon.png" />
+    <None Include="Resources\Background.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\plaza-square-city-town-travel-512.png" />
+    <None Include="Resources\Witch Garden.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\7390029.png" />
+    <None Include="Resources\Witch hut.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\agriculture-farm-field.png" />
+    <None Include="Resources\Town Plaza.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\scary_witch_house_colored_icon_in_powerpoint_pptx_png_and_editable_eps_format_slide011.jpg" />
+    <None Include="Resources\Home.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pngtree-line-illustration-of-forest-and-trees-in-garden-with-colorful-butterfly-vector-png-image_6923308.png" />
+    <None Include="Resources\Bridge.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\4413874.png" />
+    <None Include="Resources\Farm Field.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\7894037.png" />
+    <None Include="Resources\Farm House.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\okw8_tjae_180521.jpg" />
+    <None Include="Resources\Spider Forest.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\image.png" />
+    <None Include="Resources\Guard Post.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
