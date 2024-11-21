@@ -62,6 +62,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SuperAdventure.resx">
       <DependentUpon>SuperAdventure.cs</DependentUpon>
@@ -84,6 +85,39 @@
       <Project>{11a78b3d-190b-4c59-80a6-9b25d130bc80}</Project>
       <Name>Engine</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elementor-placeholder-image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\House-With-Garden-Flat-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plaza-square-city-town-travel-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7390029.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agriculture-farm-field.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scary_witch_house_colored_icon_in_powerpoint_pptx_png_and_editable_eps_format_slide011.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngtree-line-illustration-of-forest-and-trees-in-garden-with-colorful-butterfly-vector-png-image_6923308.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4413874.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7894037.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\okw8_tjae_180521.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

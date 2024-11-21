@@ -603,6 +603,7 @@ namespace Engine
             }
         }
 
+
         public static Player CreatePlayerFromXmlString(string xmlPlayerData)
         {
             try

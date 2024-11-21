@@ -50,8 +50,29 @@
             this.dgvQuests = new System.Windows.Forms.DataGridView();
             this.btnUseWeapon = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.picGarden = new System.Windows.Forms.PictureBox();
+            this.picAlchemyHut = new System.Windows.Forms.PictureBox();
+            this.picHome = new System.Windows.Forms.PictureBox();
+            this.picSpiderForest = new System.Windows.Forms.PictureBox();
+            this.picBridge = new System.Windows.Forms.PictureBox();
+            this.picGuardHouse = new System.Windows.Forms.PictureBox();
+            this.picTownSquare = new System.Windows.Forms.PictureBox();
+            this.picFarmHouse = new System.Windows.Forms.PictureBox();
+            this.picFields = new System.Windows.Forms.PictureBox();
+            this.picBackground = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGarden)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAlchemyHut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHome)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSpiderForest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBridge)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGuardHouse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTownSquare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFarmHouse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFields)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBackground)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -125,7 +146,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(617, 531);
+            this.label5.Location = new System.Drawing.Point(940, 540);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 9;
@@ -134,7 +155,7 @@
             // cboWeapons
             // 
             this.cboWeapons.FormattingEnabled = true;
-            this.cboWeapons.Location = new System.Drawing.Point(369, 559);
+            this.cboWeapons.Location = new System.Drawing.Point(692, 568);
             this.cboWeapons.Name = "cboWeapons";
             this.cboWeapons.Size = new System.Drawing.Size(121, 21);
             this.cboWeapons.TabIndex = 10;
@@ -142,14 +163,14 @@
             // cboPotions
             // 
             this.cboPotions.FormattingEnabled = true;
-            this.cboPotions.Location = new System.Drawing.Point(369, 593);
+            this.cboPotions.Location = new System.Drawing.Point(692, 602);
             this.cboPotions.Name = "cboPotions";
             this.cboPotions.Size = new System.Drawing.Size(121, 21);
             this.cboPotions.TabIndex = 11;
             // 
             // btnUsePotion
             // 
-            this.btnUsePotion.Location = new System.Drawing.Point(620, 593);
+            this.btnUsePotion.Location = new System.Drawing.Point(943, 602);
             this.btnUsePotion.Name = "btnUsePotion";
             this.btnUsePotion.Size = new System.Drawing.Size(75, 23);
             this.btnUsePotion.TabIndex = 13;
@@ -159,7 +180,7 @@
             // 
             // btnNorth
             // 
-            this.btnNorth.Location = new System.Drawing.Point(493, 433);
+            this.btnNorth.Location = new System.Drawing.Point(863, 469);
             this.btnNorth.Name = "btnNorth";
             this.btnNorth.Size = new System.Drawing.Size(75, 23);
             this.btnNorth.TabIndex = 14;
@@ -169,7 +190,7 @@
             // 
             // btnEast
             // 
-            this.btnEast.Location = new System.Drawing.Point(573, 457);
+            this.btnEast.Location = new System.Drawing.Point(943, 493);
             this.btnEast.Name = "btnEast";
             this.btnEast.Size = new System.Drawing.Size(75, 23);
             this.btnEast.TabIndex = 15;
@@ -179,7 +200,7 @@
             // 
             // btnSouth
             // 
-            this.btnSouth.Location = new System.Drawing.Point(493, 457);
+            this.btnSouth.Location = new System.Drawing.Point(863, 493);
             this.btnSouth.Name = "btnSouth";
             this.btnSouth.Size = new System.Drawing.Size(75, 23);
             this.btnSouth.TabIndex = 16;
@@ -189,7 +210,7 @@
             // 
             // btnWest
             // 
-            this.btnWest.Location = new System.Drawing.Point(412, 457);
+            this.btnWest.Location = new System.Drawing.Point(782, 493);
             this.btnWest.Name = "btnWest";
             this.btnWest.Size = new System.Drawing.Size(75, 23);
             this.btnWest.TabIndex = 17;
@@ -199,22 +220,22 @@
             // 
             // rtbLocation
             // 
-            this.rtbLocation.Location = new System.Drawing.Point(347, 19);
+            this.rtbLocation.Location = new System.Drawing.Point(700, 253);
             this.rtbLocation.Name = "rtbLocation";
             this.rtbLocation.ReadOnly = true;
-            this.rtbLocation.Size = new System.Drawing.Size(360, 105);
+            this.rtbLocation.Size = new System.Drawing.Size(360, 165);
             this.rtbLocation.TabIndex = 18;
             this.rtbLocation.Text = "";
             this.rtbLocation.TextChanged += new System.EventHandler(this.rtbLocation_TextChanged);
             // 
             // rtbMessages
             // 
-            this.rtbMessages.Location = new System.Drawing.Point(347, 130);
+            this.rtbMessages.Location = new System.Drawing.Point(334, 22);
             this.rtbMessages.Name = "rtbMessages";
-            this.rtbMessages.Size = new System.Drawing.Size(360, 286);
+            this.rtbMessages.ReadOnly = true;
+            this.rtbMessages.Size = new System.Drawing.Size(360, 396);
             this.rtbMessages.TabIndex = 19;
             this.rtbMessages.Text = "";
-            this.rtbMessages.TextChanged += new System.EventHandler(this.rtbMessages_TextChanged);
             // 
             // dgvInventory
             // 
@@ -248,7 +269,7 @@
             // 
             // btnUseWeapon
             // 
-            this.btnUseWeapon.Location = new System.Drawing.Point(620, 559);
+            this.btnUseWeapon.Location = new System.Drawing.Point(943, 568);
             this.btnUseWeapon.Name = "btnUseWeapon";
             this.btnUseWeapon.Size = new System.Drawing.Size(75, 23);
             this.btnUseWeapon.TabIndex = 22;
@@ -266,11 +287,138 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // picGarden
+            // 
+            this.picGarden.Image = global::SuperAdventure.Properties.Resources.pngtree_line_illustration_of_forest_and_trees_in_garden_with_colorful_butterfly_vector_png_image_6923308;
+            this.picGarden.Location = new System.Drawing.Point(828, 29);
+            this.picGarden.Name = "picGarden";
+            this.picGarden.Size = new System.Drawing.Size(52, 50);
+            this.picGarden.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picGarden.TabIndex = 32;
+            this.picGarden.TabStop = false;
+            this.picGarden.Visible = false;
+            // 
+            // picAlchemyHut
+            // 
+            this.picAlchemyHut.Image = global::SuperAdventure.Properties.Resources.scary_witch_house_colored_icon_in_powerpoint_pptx_png_and_editable_eps_format_slide011;
+            this.picAlchemyHut.Location = new System.Drawing.Point(828, 85);
+            this.picAlchemyHut.Name = "picAlchemyHut";
+            this.picAlchemyHut.Size = new System.Drawing.Size(52, 50);
+            this.picAlchemyHut.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAlchemyHut.TabIndex = 31;
+            this.picAlchemyHut.TabStop = false;
+            this.picAlchemyHut.Visible = false;
+            // 
+            // picHome
+            // 
+            this.picHome.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.picHome.Image = global::SuperAdventure.Properties.Resources.House_With_Garden_Flat_icon;
+            this.picHome.Location = new System.Drawing.Point(828, 197);
+            this.picHome.Name = "picHome";
+            this.picHome.Size = new System.Drawing.Size(52, 50);
+            this.picHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHome.TabIndex = 30;
+            this.picHome.TabStop = false;
+            // 
+            // picSpiderForest
+            // 
+            this.picSpiderForest.Image = global::SuperAdventure.Properties.Resources.okw8_tjae_180521;
+            this.picSpiderForest.Location = new System.Drawing.Point(1002, 141);
+            this.picSpiderForest.Name = "picSpiderForest";
+            this.picSpiderForest.Size = new System.Drawing.Size(52, 50);
+            this.picSpiderForest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picSpiderForest.TabIndex = 29;
+            this.picSpiderForest.TabStop = false;
+            this.picSpiderForest.Visible = false;
+            // 
+            // picBridge
+            // 
+            this.picBridge.Image = global::SuperAdventure.Properties.Resources._7894037;
+            this.picBridge.Location = new System.Drawing.Point(944, 141);
+            this.picBridge.Name = "picBridge";
+            this.picBridge.Size = new System.Drawing.Size(52, 50);
+            this.picBridge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBridge.TabIndex = 28;
+            this.picBridge.TabStop = false;
+            this.picBridge.Visible = false;
+            // 
+            // picGuardHouse
+            // 
+            this.picGuardHouse.Image = global::SuperAdventure.Properties.Resources._4413874;
+            this.picGuardHouse.Location = new System.Drawing.Point(886, 141);
+            this.picGuardHouse.Name = "picGuardHouse";
+            this.picGuardHouse.Size = new System.Drawing.Size(52, 50);
+            this.picGuardHouse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picGuardHouse.TabIndex = 27;
+            this.picGuardHouse.TabStop = false;
+            this.picGuardHouse.Visible = false;
+            // 
+            // picTownSquare
+            // 
+            this.picTownSquare.Image = global::SuperAdventure.Properties.Resources.plaza_square_city_town_travel_512;
+            this.picTownSquare.Location = new System.Drawing.Point(828, 141);
+            this.picTownSquare.Name = "picTownSquare";
+            this.picTownSquare.Size = new System.Drawing.Size(52, 50);
+            this.picTownSquare.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picTownSquare.TabIndex = 26;
+            this.picTownSquare.TabStop = false;
+            this.picTownSquare.Visible = false;
+            // 
+            // picFarmHouse
+            // 
+            this.picFarmHouse.Image = global::SuperAdventure.Properties.Resources._7390029;
+            this.picFarmHouse.Location = new System.Drawing.Point(770, 141);
+            this.picFarmHouse.Name = "picFarmHouse";
+            this.picFarmHouse.Size = new System.Drawing.Size(52, 50);
+            this.picFarmHouse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picFarmHouse.TabIndex = 25;
+            this.picFarmHouse.TabStop = false;
+            this.picFarmHouse.Visible = false;
+            // 
+            // picFields
+            // 
+            this.picFields.Image = global::SuperAdventure.Properties.Resources.agriculture_farm_field;
+            this.picFields.Location = new System.Drawing.Point(712, 141);
+            this.picFields.Name = "picFields";
+            this.picFields.Size = new System.Drawing.Size(52, 50);
+            this.picFields.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picFields.TabIndex = 24;
+            this.picFields.TabStop = false;
+            this.picFields.Visible = false;
+            // 
+            // picBackground
+            // 
+            this.picBackground.Image = global::SuperAdventure.Properties.Resources.image1;
+            this.picBackground.Location = new System.Drawing.Point(705, 16);
+            this.picBackground.Name = "picBackground";
+            this.picBackground.Size = new System.Drawing.Size(357, 244);
+            this.picBackground.TabIndex = 33;
+            this.picBackground.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(718, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(28, 13);
+            this.label6.TabIndex = 34;
+            this.label6.Text = "Map";
+            // 
             // SuperAdventure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 651);
+            this.ClientSize = new System.Drawing.Size(1083, 651);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.picGarden);
+            this.Controls.Add(this.picAlchemyHut);
+            this.Controls.Add(this.picHome);
+            this.Controls.Add(this.picSpiderForest);
+            this.Controls.Add(this.picBridge);
+            this.Controls.Add(this.picGuardHouse);
+            this.Controls.Add(this.picTownSquare);
+            this.Controls.Add(this.picFarmHouse);
+            this.Controls.Add(this.picFields);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnUseWeapon);
             this.Controls.Add(this.dgvQuests);
@@ -293,12 +441,23 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.picBackground);
             this.Name = "SuperAdventure";
             this.Text = "My Game";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SuperAdventure_FormClosing);
             this.Load += new System.EventHandler(this.SuperAdventure_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGarden)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAlchemyHut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHome)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSpiderForest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBridge)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGuardHouse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTownSquare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFarmHouse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFields)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBackground)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,6 +487,17 @@
         private System.Windows.Forms.DataGridView dgvQuests;
         private System.Windows.Forms.Button btnUseWeapon;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox picFields;
+        private System.Windows.Forms.PictureBox picFarmHouse;
+        private System.Windows.Forms.PictureBox picTownSquare;
+        private System.Windows.Forms.PictureBox picGuardHouse;
+        private System.Windows.Forms.PictureBox picBridge;
+        private System.Windows.Forms.PictureBox picSpiderForest;
+        private System.Windows.Forms.PictureBox picHome;
+        private System.Windows.Forms.PictureBox picAlchemyHut;
+        private System.Windows.Forms.PictureBox picGarden;
+        private System.Windows.Forms.PictureBox picBackground;
+        private System.Windows.Forms.Label label6;
     }
 }
 
