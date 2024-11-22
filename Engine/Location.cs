@@ -12,6 +12,8 @@ namespace Engine
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public Vendor VendorWorkingHere { get; set; }
+
         public Location(int id, string name, string description, Item itemRequiredToEnter = null, Quest questAvailableHere = null, Monster monsterLivingHere = null)
         {
             ID = id;
