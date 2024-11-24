@@ -386,7 +386,6 @@
             this.picTownSquare.TabIndex = 26;
             this.picTownSquare.TabStop = false;
             this.ttMapImageDetails.SetToolTip(this.picTownSquare, "Town Square");
-            this.picTownSquare.UseWaitCursor = true;
             this.picTownSquare.Visible = false;
             // 
             // picFarmHouse
