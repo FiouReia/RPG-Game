@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +50,7 @@
             this.dgvInventory = new System.Windows.Forms.DataGridView();
             this.dgvQuests = new System.Windows.Forms.DataGridView();
             this.btnUseWeapon = new System.Windows.Forms.Button();
+            this.btnTrade = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.picGarden = new System.Windows.Forms.PictureBox();
@@ -61,6 +63,7 @@
             this.picFarmHouse = new System.Windows.Forms.PictureBox();
             this.picFields = new System.Windows.Forms.PictureBox();
             this.picBackground = new System.Windows.Forms.PictureBox();
+            this.ttMapImageDetails = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picGarden)).BeginInit();
@@ -277,6 +280,16 @@
             this.btnUseWeapon.UseVisualStyleBackColor = true;
             this.btnUseWeapon.Click += new System.EventHandler(this.btnUseWeapon_Click);
             // 
+            // btnTrade
+            // 
+            this.btnTrade.Location = new System.Drawing.Point(493, 620);
+            this.btnTrade.Name = "btnTrade";
+            this.btnTrade.Size = new System.Drawing.Size(75, 23);
+            this.btnTrade.TabIndex = 21;
+            this.btnTrade.Text = "Trade";
+            this.btnTrade.UseVisualStyleBackColor = true;
+            this.btnTrade.Click += new System.EventHandler(this.btnTrade_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(253, 20);
@@ -328,6 +341,7 @@
             this.picHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picHome.TabIndex = 30;
             this.picHome.TabStop = false;
+            this.ttMapImageDetails.SetToolTip(this.picHome, "Home");
             // 
             // picSpiderForest
             // 
@@ -371,6 +385,8 @@
             this.picTownSquare.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picTownSquare.TabIndex = 26;
             this.picTownSquare.TabStop = false;
+            this.ttMapImageDetails.SetToolTip(this.picTownSquare, "Town Square");
+            this.picTownSquare.UseWaitCursor = true;
             this.picTownSquare.Visible = false;
             // 
             // picFarmHouse
@@ -404,6 +420,12 @@
             this.picBackground.TabIndex = 33;
             this.picBackground.TabStop = false;
             // 
+            // ttMapImageDetails
+            // 
+            this.ttMapImageDetails.AutomaticDelay = 0;
+            this.ttMapImageDetails.IsBalloon = true;
+            this.ttMapImageDetails.ShowAlways = true;
+            // 
             // SuperAdventure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,6 +443,7 @@
             this.Controls.Add(this.picFields);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnUseWeapon);
+            this.Controls.Add(this.btnTrade);
             this.Controls.Add(this.dgvQuests);
             this.Controls.Add(this.dgvInventory);
             this.Controls.Add(this.rtbMessages);
@@ -486,6 +509,7 @@
         private System.Windows.Forms.DataGridView dgvInventory;
         private System.Windows.Forms.DataGridView dgvQuests;
         private System.Windows.Forms.Button btnUseWeapon;
+        private System.Windows.Forms.Button btnTrade;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox picFields;
         private System.Windows.Forms.PictureBox picFarmHouse;
@@ -498,6 +522,7 @@
         private System.Windows.Forms.PictureBox picGarden;
         private System.Windows.Forms.PictureBox picBackground;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolTip ttMapImageDetails;
     }
 }
 
