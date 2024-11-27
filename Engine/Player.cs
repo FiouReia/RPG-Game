@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Engine
@@ -199,6 +195,22 @@ namespace Engine
 
         }
 
+        public void CreateNewChildXmlNode(XmlDocument document, XmlNode parentNode, string elementName, object value)
+        {
+            XmlNode node = document.CreateElement(elementName);
+            node.AppendChild(document.CreateTextNode(value.ToString()));
+            parentNode.AppendChild(node);
+
+        }
+
+        public void AddXmlAttribute(XmlDocument document, XmlNode node, string attributeName, object value)
+        {
+            XmlAttribute attribute = document.CreateAttribute(attributeName);
+            attribute.Value = value.ToString();
+            node.Attributes.Append(attribute);
+        }
+
+
         public string ToXmlString()
         {
             XmlDocument playerData = new XmlDocument();
@@ -210,31 +222,20 @@ namespace Engine
             player.AppendChild(stats);
             // Create the child nodes for the "Stats" node
 
-            XmlNode currentHitPoints = playerData.CreateElement("CurrentHitPoints");
-            currentHitPoints.AppendChild(playerData.CreateTextNode(this.CurrentHitPoints.ToString()));
-            stats.AppendChild(currentHitPoints);
 
-            XmlNode maximumHitPoints = playerData.CreateElement("MaximumHitPoints");
-            maximumHitPoints.AppendChild(playerData.CreateTextNode(this.MaximumHitPoints.ToString()));
-            stats.AppendChild(maximumHitPoints);
+            CreateNewChildXmlNode(playerData, stats, "CurrentHitPoints", this.CurrentHitPoints);
 
-            XmlNode gold = playerData.CreateElement("Gold");
-            gold.AppendChild(playerData.CreateTextNode(this.Gold.ToString()));
-            stats.AppendChild(gold);
+            CreateNewChildXmlNode(playerData, stats, "MaximumHitPoints", this.MaximumHitPoints);
 
-            XmlNode experiencePoints = playerData.CreateElement("ExperiencePoints");
-            experiencePoints.AppendChild(playerData.CreateTextNode(this.ExperiencePoints.ToString()));
-            stats.AppendChild(experiencePoints);
+            CreateNewChildXmlNode(playerData, stats, "Gold", this.Gold);
 
-            XmlNode currentLocation = playerData.CreateElement("CurrentLocation");
-            currentLocation.AppendChild(playerData.CreateTextNode(this.CurrentLocation.ID.ToString()));
-            stats.AppendChild(currentLocation);
+            CreateNewChildXmlNode(playerData, stats, "ExperiencePoints", this.ExperiencePoints);
+
+            CreateNewChildXmlNode(playerData, stats, "CurrentLocation", this.CurrentLocation.ID);
 
             if (CurrentWeapon != null)
             {
-                XmlNode currentWeapon = playerData.CreateElement("CurrentWeapon");
-                currentWeapon.AppendChild(playerData.CreateTextNode(this.CurrentWeapon.ID.ToString()));
-                stats.AppendChild(currentWeapon);
+                CreateNewChildXmlNode(playerData, stats, "CurrentWeapon", this.CurrentWeapon.ID);
             }
 
             // Create the "InventoryItems" child node to hold each InventoryItem node
@@ -244,12 +245,10 @@ namespace Engine
             foreach (InventoryItem item in this.Inventory)
             {
                 XmlNode inventoryItem = playerData.CreateElement("InventoryItem");
-                XmlAttribute idAttribute = playerData.CreateAttribute("ID");
-                idAttribute.Value = item.Details.ID.ToString();
-                inventoryItem.Attributes.Append(idAttribute);
-                XmlAttribute quantityAttribute = playerData.CreateAttribute("Quantity");
-                quantityAttribute.Value = item.Quantity.ToString();
-                inventoryItem.Attributes.Append(quantityAttribute);
+
+                AddXmlAttribute(playerData, inventoryItem, "InventoryItem", item.Details.ID);
+                AddXmlAttribute(playerData, inventoryItem, "Quantity", item.Quantity);
+
                 inventoryItems.AppendChild(inventoryItem);
             }
             // Create the "PlayerQuests" child node to hold each PlayerQuest node
@@ -259,20 +258,11 @@ namespace Engine
             foreach (PlayerQuest quest in this.Quests)
             {
                 XmlNode playerQuest = playerData.CreateElement("PlayerQuest");
-                XmlAttribute idAttribute = playerData.CreateAttribute("ID");
-                idAttribute.Value = quest.Details.ID.ToString();
-                playerQuest.Attributes.Append(idAttribute);
-                XmlAttribute isCompletedAttribute = playerData.CreateAttribute("IsCompleted");
-                isCompletedAttribute.Value = quest.IsCompleted.ToString();
-                playerQuest.Attributes.Append(isCompletedAttribute);
-                playerQuests.AppendChild(playerQuest);
-            }
 
-            if (CurrentWeapon != null)
-            {
-                XmlNode currentWeapon = playerData.CreateElement("CurrentWeapon");
-                currentWeapon.AppendChild(playerData.CreateTextNode(this.CurrentWeapon.ID.ToString()));
-                stats.AppendChild(currentWeapon);
+                AddXmlAttribute(playerData,playerQuest,"ID",quest.Details.ID);
+                AddXmlAttribute(playerData, playerQuest, "IsCompleted", quest.IsCompleted);
+
+                playerQuests.AppendChild(playerQuest);
             }
 
             return playerData.InnerXml; // The XML document, as a string, so we can save the data to disk
@@ -327,49 +317,20 @@ namespace Engine
             CurrentHitPoints = MaximumHitPoints;
 
             // Does the location have a quest?
-            if (newLocation.QuestAvailableHere != null)
+            if (newLocation.HasQuest)
             {
-                // See if the player already has the quest, and if they've completed it
-                bool playerAlreadyHasQuest = HasThisQuest(newLocation.QuestAvailableHere);
-                bool playerAlreadyCompletedQuest = CompletedThisQuest(newLocation.QuestAvailableHere);
 
                 // See if the player already has the quest
-                if (playerAlreadyHasQuest)
+                if (HasThisQuest(newLocation.QuestAvailableHere))
                 {
                     // If the player has not completed the quest yet
-                    if (!playerAlreadyCompletedQuest)
+                    if (!CompletedThisQuest(newLocation.QuestAvailableHere))
                     {
-                        // See if the player has all the items needed to complete the quest
-                        bool playerHasAllItemsToCompleteQuest = HasAllQuestCompletionItems(newLocation.QuestAvailableHere);
 
                         // The player has all items required to complete the quest
-                        if (playerHasAllItemsToCompleteQuest)
+                        if (HasAllQuestCompletionItems(newLocation.QuestAvailableHere))
                         {
-                            // Display message
-                            RaiseMessage("");
-                            RaiseMessage("You complete the '" + newLocation.QuestAvailableHere.Name + "' quest.");
-
-                            // Remove quest items from inventory
-                            RemoveQuestCompletionItems(newLocation.QuestAvailableHere);
-
-                            // Give quest rewards
-                            RaiseMessage("You receive: ");
-                            RaiseMessage(newLocation.QuestAvailableHere.RewardExperiencePoints + " experience points");
-                            RaiseMessage(newLocation.QuestAvailableHere.RewardGold + " gold");
-                            foreach (QuestReward ii in newLocation.QuestAvailableHere.RewardItem)
-                            {
-                                RaiseMessage(ii.Details.Name + " x" + ii.Quantity.ToString(),true);
-                            }
-
-                            AddExperiencePoints(newLocation.QuestAvailableHere.RewardExperiencePoints);
-                            Gold += newLocation.QuestAvailableHere.RewardGold;
-
-                            // Add the reward item to the player's inventory
-                            GiveQuestRewards(newLocation);
-
-
-                            // Mark the quest as completed
-                            MarkQuestCompleted(newLocation.QuestAvailableHere);
+                            GivePlayerRewards(newLocation);
                         }
                     }
                 }
@@ -400,7 +361,7 @@ namespace Engine
             }
 
             // Does the location have a monster?
-            if (newLocation.MonsterLivingHere != null)
+            if (newLocation.HasMonster)
             {
                 RaiseMessage("You see a " + newLocation.MonsterLivingHere.Name);
 
@@ -419,6 +380,35 @@ namespace Engine
             {
                 _currentMonster = null;
             }
+        }
+
+        private void GivePlayerRewards(Location newLocation)
+        {
+            // Display message
+            RaiseMessage("");
+            RaiseMessage("You complete the '" + newLocation.QuestAvailableHere.Name + "' quest.");
+
+            // Remove quest items from inventory
+            RemoveQuestCompletionItems(newLocation.QuestAvailableHere);
+
+            // Give quest rewards
+            RaiseMessage("You receive: ");
+            RaiseMessage(newLocation.QuestAvailableHere.RewardExperiencePoints + " experience points");
+            RaiseMessage(newLocation.QuestAvailableHere.RewardGold + " gold");
+            foreach (QuestReward ii in newLocation.QuestAvailableHere.RewardItem)
+            {
+                RaiseMessage(ii.Details.Name + " x" + ii.Quantity.ToString(), true);
+            }
+
+            AddExperiencePoints(newLocation.QuestAvailableHere.RewardExperiencePoints);
+            Gold += newLocation.QuestAvailableHere.RewardGold;
+
+            // Add the reward item to the player's inventory
+            GiveQuestRewards(newLocation);
+
+
+            // Mark the quest as completed
+            MarkQuestCompleted(newLocation.QuestAvailableHere);
         }
 
         private void GiveQuestRewards(Location newLocation)
