@@ -25,6 +25,10 @@
         public Location LocationToSouth { get; set; }
         public Location LocationToWest { get; set; }
 
+        public bool HasMonster { get { return MonsterLivingHere != null; } }
+
+        public bool HasQuest { get { return QuestAvailableHere != null; } }
+
 
 
     }
