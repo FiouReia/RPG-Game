@@ -60,6 +60,7 @@
             this.dgvMyItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMyItems.Location = new System.Drawing.Point(13, 43);
             this.dgvMyItems.Name = "dgvMyItems";
+            this.dgvMyItems.ReadOnly = true;
             this.dgvMyItems.Size = new System.Drawing.Size(240, 216);
             this.dgvMyItems.TabIndex = 2;
             // 
@@ -68,6 +69,7 @@
             this.dgvVendorItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVendorItems.Location = new System.Drawing.Point(276, 43);
             this.dgvVendorItems.Name = "dgvVendorItems";
+            this.dgvVendorItems.ReadOnly = true;
             this.dgvVendorItems.Size = new System.Drawing.Size(240, 216);
             this.dgvVendorItems.TabIndex = 3;
             // 

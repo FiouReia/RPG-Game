@@ -30,8 +30,11 @@ namespace SuperAdventure
             // This hidden column holds the item ID, so we know which item to sell
             dgvMyItems.Columns.Add(new DataGridViewTextBoxColumn
             {
+                HeaderText = "Item ID",
                 DataPropertyName = "ItemID",
-                Visible = false
+                Width = 30,
+                DefaultCellStyle = rightAlignedCellStyle
+                //Visible = false
             });
             dgvMyItems.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -72,7 +75,10 @@ namespace SuperAdventure
             dgvVendorItems.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "ItemID",
-                Visible = false
+                Width = 30,
+                DefaultCellStyle = rightAlignedCellStyle,
+                HeaderText = "Item ID"
+                //Visible = false
             });
             dgvVendorItems.Columns.Add(new DataGridViewTextBoxColumn
             {
