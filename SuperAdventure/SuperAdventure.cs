@@ -22,13 +22,26 @@ namespace SuperAdventure
 
             InitializeComponent();
 
-            if (File.Exists(PLAYER_DATA_FILE_NAME))
+            //if (File.Exists(PLAYER_DATA_FILE_NAME))
+            //{
+            //    _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
+            //}
+            //else
+            //{
+            //    _player = Player.CreateDefaultPlayer();
+            //}
+
+            _player = PlayerDataMapper.CreateFromDatabase();
+            if (_player == null)
             {
-                _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
-            }
-            else
-            {
-                _player = Player.CreateDefaultPlayer();
+                if (File.Exists(PLAYER_DATA_FILE_NAME))
+                {
+                    _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
+                }
+                else
+                {
+                    _player = Player.CreateDefaultPlayer();
+                }
             }
 
             lblHitPoints.DataBindings.Add("Text", _player, "CurrentHitPoints");
@@ -91,6 +104,7 @@ namespace SuperAdventure
             _player.OnMessage += DisplayMessage;
 
             _player.MoveTo(_player.CurrentLocation);
+            ShowLocationPicture();
 
         }
 
@@ -136,6 +150,9 @@ namespace SuperAdventure
                 btnSouth.Visible = (_player.CurrentLocation.LocationToSouth != null);
                 btnWest.Visible = (_player.CurrentLocation.LocationToWest != null);
 
+                //show/hide trade button
+                btnTrade.Visible = (_player.CurrentLocation.VendorWorkingHere != null);
+
                 // Display current location name and description
                 rtbLocation.Text = _player.CurrentLocation.Name + Environment.NewLine;
                 rtbLocation.Text += _player.CurrentLocation.Description + Environment.NewLine;
@@ -155,6 +172,9 @@ namespace SuperAdventure
                     btnUsePotion.Visible = _player.Potions.Any();
                 }
             }
+
+
+
         }
 
         private void SuperAdventure_Load(object sender, EventArgs e)
@@ -171,21 +191,80 @@ namespace SuperAdventure
         private void btnNorth_Click(object sender, EventArgs e)
         {
             _player.MoveNorth();
+            ShowLocationPicture();
         }
 
         private void btnEast_Click(object sender, EventArgs e)
         {
             _player.MoveEast();
+            ShowLocationPicture();
         }
 
         private void btnSouth_Click(object sender, EventArgs e)
         {
             _player.MoveSouth();
+            ShowLocationPicture();
         }
 
         private void btnWest_Click(object sender, EventArgs e)
         {
+            
             _player.MoveWest();
+            ShowLocationPicture();
+        }
+
+        public void ClearPicture()
+        {
+            picSpiderForest.Visible = false;
+            picBridge.Visible = false;
+            picFarmHouse.Visible = false;
+            picFields.Visible = false;
+            picGarden.Visible = false;
+            picAlchemyHut.Visible = false;
+            picGuardHouse.Visible = false;
+            picTownSquare.Visible = false;
+            picHome.Visible = false;
+        }
+
+        public void ShowLocationPicture()
+        {
+            ClearPicture();
+            int currnetLocationID = _player.CurrentLocation.ID;
+
+            switch (currnetLocationID)
+            {
+                case World.LOCATION_ID_HOME:
+                    picHome.Visible = true;
+                    break;
+                case World.LOCATION_ID_TOWN_SQUARE:
+                    picTownSquare.Visible = true;
+                    break;
+                case World.LOCATION_ID_GUARD_POST:
+                    picGuardHouse.Visible = true;
+                    break;
+                case World.LOCATION_ID_ALCHEMIST_HUT:
+                    picAlchemyHut.Visible = true;
+                    break;
+                case World.LOCATION_ID_ALCHEMISTS_GARDEN:
+                    picGarden.Visible = true;
+                    break;
+                case World.LOCATION_ID_FARMHOUSE:
+                    picFarmHouse.Visible = true;
+                    break;
+                case World.LOCATION_ID_FARM_FIELD:
+                    picFields.Visible = true;
+                    break;
+                case World.LOCATION_ID_BRIDGE:
+                    picBridge.Visible = true;
+                    break;
+                case World.LOCATION_ID_SPIDER_FIELD:
+                    picSpiderForest.Visible = true;
+                    break;
+
+
+                default:
+                    break;
+            }
         }
 
 
@@ -222,6 +301,7 @@ namespace SuperAdventure
         private void SuperAdventure_FormClosing(object sender, FormClosingEventArgs e)
         {
             File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());
+            PlayerDataMapper.SaveToDatabase(_player);
         }
 
         private void cboWeapons_SelectedIndexChanged(object sender, EventArgs e)
@@ -229,6 +309,12 @@ namespace SuperAdventure
             _player.CurrentWeapon = (Weapon)cboWeapons.SelectedItem;
         }
 
+        private void btnTrade_Click(object sender, EventArgs e)
+        {
+            TradingScreen tradingScreen = new TradingScreen(_player);
+            tradingScreen.StartPosition = FormStartPosition.CenterParent;
+            tradingScreen.ShowDialog(this);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             _player = Player.ResetPlayer(_player);

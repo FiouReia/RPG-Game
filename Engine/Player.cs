@@ -603,6 +603,7 @@ namespace Engine
             }
         }
 
+
         public static Player CreatePlayerFromXmlString(string xmlPlayerData)
         {
             try
@@ -649,6 +650,13 @@ namespace Engine
             }
 
 
+        }
+
+        public static Player CreatePlayerFromDatabase(int currentHitPoints, int maximumHitPoints, int gold, int experiencePoints, int currentLocationID)
+        {
+            Player player = new Player(currentHitPoints, maximumHitPoints, gold, experiencePoints);
+            player.MoveTo(World.LocationByID(currentLocationID));
+            return player;
         }
 
 

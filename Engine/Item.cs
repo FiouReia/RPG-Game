@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,14 @@ namespace Engine
         public string Name { get; set; }  
         public string NamePlural { get; set; }
 
-        public Item(int id, string name, string namePlural)
+        public int Price { get; set; }  
+
+        public Item(int id, string name, string namePlural, int price)
         {
             ID = id;
             Name = name;
             NamePlural = namePlural;
+            Price = price;
         }
     }
 }
