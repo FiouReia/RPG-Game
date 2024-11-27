@@ -1,12 +1,12 @@
 # RPG GAME
 
-A Role-Playing Game Developed entirely in C# (In development)
+A Role-Playing Game Developed entirely in C#
 
 ## Tech Stack
 
 **Client:** C#
 
-**Server:** (In Development)
+**Server:** SQL
 
 ## Acknowledgements
 
